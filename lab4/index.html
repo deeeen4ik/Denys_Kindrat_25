@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.btnShow {
+			position: relative;
+			width: 500px; height: 75px;
+			left: 85vh; top: 45vh;
+			font-size: 2rem;
+			background-color: black;
+			color: white;
+		}
+		.btnFinish {
+			display: none;
+			position: relative;
+			width: 300px; height: 50px;
+			left: 85vh; top: 2vh;	
+			font-size: 2rem;
+			background-color: black;
+			color: white;
+		}
+		.btnShow:hover, .btnFinish:hover {
+			background-color: white;
+			color: black;
+			cursor: pointer;
+		}
+
+	</style>
+</head>
+<body>
+	<form id="generalForm" style="display: none;">
+		<fieldset class="choice">
+			<h2>Ви донатите на ЗСУ?</h2>
+			<input type="radio" name="firstQuestion" value="True"> Так :) <br>
+			<br><input type="radio" name="firstQuestion" value="False"> Ні :(<br>
+		</fieldset>
+
+        <fieldset class="choice">
+			<h2>Укажіть ваших улюблених виконавців(2 правильні відповіді)</h2>
+		  <input type="checkbox" name="secondQuestion" value="True"> Святослав Вакарчук <br>
+			<br><input type="checkbox" name="secondQuestion" value="False"> Інстасамка<br>
+            <br><input type="checkbox" name="secondQuestion" value="False"> Бузова <br>
+			<br><input type="checkbox" name="secondQuestion" value="True"> Олександр Пономарьов <br>
+		</fieldset>
+
+		<fieldset class="choice">
+			<h2>Українська мова друга по милозвучності в світі?</h2>
+			<input type="radio" name="thirdQuestion" value="True"> Так :) <br>
+			<br><input type="radio" name="thirdQuestion" value="False"> Ні :(<br>
+		</fieldset>
+
+		<fieldset class="choice">
+			<h2>Укажіть ваш улюблений університет</h2>
+		  <input type="radio" name="fourthQuestion" value="False"> Національний університет "Львівська політехніка" <br>
+			<br><input type="radio" name="fourthQuestion" value="False"> Івано-Франківський національний технічний університет нафти і газу <br>
+			<br><input type="radio" name="fourthQuestion" value="True"> Прикарпатський національний університет <br>
+			<br><input type="radio" name="fourthQuestion" value="False"> Університет Короля<br>
+		</fieldset>
+
+		<fieldset class="info">
+			<h2>Вкажіть своє ім'я:</h2>
+			<input type="text" name="fiveQuestion" placeholder="Денис" ><br><br>	
+		</fieldset>
+
+		<fieldset class="info">
+			<h2>Вкажіть свій номер телефону:</h2>
+			(+380) <input type="number" name="sixQuestion" placeholder="00-000-000"><br><br>
+		</fieldset>
+	</form>
+				<button id="end" class="btnFinish">Finish</button>
+        <button id="show" class="btnShow">Start</button>
+	
+				<script>
+					const btnShow = document.querySelector('#show');
+        	const btnFinish = document.querySelector('#end');
+
+					btnShow.addEventListener('click', () => {
+            document.querySelector('#generalForm').style.display = 'block';
+            document.querySelector('#show').style.display = 'none';
+						document.querySelector('#end').style.display = 'block'
+            btnResult.style.display = 'block';
+        });
+
+				function getSelected() {
+            return document.querySelectorAll('.choice input:checked');
+        }
+
+				function getPrivateInfo() {
+            return document.querySelectorAll('.info input');
+        }
+
+				function getValues(inputs) {
+            return Array.from(inputs, inp => inp.value);
+        }
+
+				function getResult(array){
+                    return (array.length-2 < array.filter(el => el === 'Ukr').length) ? 'Вітаю, ви пройшли тест' : `Ви пройшли тест на: ${array.filter(el => el === 'True').length*20}%`;
+        }
+
+				btnFinish.addEventListener('click', () => {
+            const selected = getValues(getSelected());
+            const [name, phone] = getValues(getPrivateInfo());
+
+
+            document.querySelector('#generalForm').style.display = 'none';
+            btnFinish.style.display = 'none';
+
+
+            const result = document.createElement('div');
+            result.innerHTML = `<h2>Результат</h2>Імя: ${name}<br>Телефон: ${phone}<br>${getResult(selected)}`;
+            document.body.prepend(result);
+        });
+				</script>
+</body>
+</html>
