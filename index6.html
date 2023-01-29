@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6 завдання</title>
+</head>
+<body>
+    <form>
+        <input type="search" id="search">
+        <button onClick = "info()">Density and area</button>
+        <button onClick = "population()">People</button>
+
+        <script>
+            let continents = [
+                {
+                    name : "Eurasia",
+                    density : 100,
+                    square : 53450000
+                },
+                {
+                    name : "North America",
+                    density : 23,
+                    square : 24250000
+                },
+                {
+                    name : "South America",
+                    density : 22,
+                    square :  17800000
+                },
+                {
+                    name : "Australia",
+                    density : 5,
+                    square : 8600000
+                },
+                {
+                    name : "Antarctica",
+                    density : 0,
+                    square : 13900000
+                },
+                {
+                    name : "Africa",
+                    density : 42,
+                    square : 30270000
+                }
+            ]
+            
+            function searchContinent() {
+                return continents.find( obj => obj.name.toLowerCase() === document.body.querySelector("#search").value.toLowerCase());
+            }
+            function population() {
+                let object = searchContinent();
+                alert(object.density * object.square + " - people")
+            }
+
+            function info() {
+                alert(Object.entries(searchContinent()).join("\n").replaceAll(",", " : "));
+            }
+        </script>
+    </form>
+</body>
+</html>
