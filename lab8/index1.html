@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>1 завдання</title>
+	<style>
+		* {
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<hr>
+	<h1 align="center">Атрибут .html()</h1>
+
+	<button class="btn_1">Міняє контент на вкладці</button>
+	<p class="p_1">Параграф 1</p>
+	<p class="p_1">Параграф 2</p>
+ 	<br><hr><br>
+
+	<h1 align="center">Атрибут .css()</h1>
+	<p class="p_2">Зміна кольору за допомогою JQuery</p>
+	<br><hr><br>
+
+	<h1 align="center">Атрибут .val()</h1>
+	<p class="p_3">Ім'я: <input type="text" name="user"></p>
+	<button class="btn_3">Встановити автоматичне значення</button>
+	<br><hr><br>
+	<h1 align="center">Атрибут .attr()</h1>
+	<ul>
+		<li><a href="" class="a_1">Приклад 1</a></li>
+		<li><a href="" class="a_2">Приклад 2</a></li>
+		<li><a href="" class="a_3">Приклад 3</a></li>
+	</ul>
+
+	<br><hr>
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		// .html()
+  		$(".btn_1").click(() => {
+    		$(".p_1").html("Hello world");
+  		});
+
+		// .css()
+		$('.p_2').css('color', 'blue');
+
+		// .val()
+		$(".btn_3").click(() => {
+    	$("input:text").val("Denys");
+  	});
+
+		//.attr()
+		$('.a_1').attr('href');
+
+		$('.a_2').attr('href', 'https://www.youtube.com/?gl=UA&hl=ru');
+
+		$('.a_3').attr({
+			href: 'https://www.youtube.com/?gl=UA&hl=ru',
+			alt: 'test'
+		});
+	</script>
+</body>
+</html>

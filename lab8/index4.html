@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>4 завдання</title>
+	<style>
+		* {
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<hr><br>
+	<h1 align="center">Атрибут .filter() 1 приклад</h1>
+	<ul>
+		<li class="li1">Комірка 1</li>
+		<li>Комірка 2</li>
+		<li class="li1">Комірка 3</li>
+		<li>Комірка 4</li>
+		<li class="li1">Комірка 5</li>
+		<li>Комірка 6</li>
+		<li class="li1">Комірка 7</li>
+		<li>Комірка 8</li>
+		<li class="li1">Комірка 9</li>
+	</ul>
+	<button class="btn1">Test 1</button>
+
+	<br><br><hr><br>
+
+	<h1 align="center">Атрибут .filter() 2 приклад</h1>
+	<ul>
+		<li class="li2">Комірка 1</li>
+		<li class="li2">Комірка 2</li>
+		<li class="li2">Комірка 3</li>
+		<li class="li2">Комірка 4</li>
+		<li class="li2">Комірка 5</li>
+		<li class="li2">Комірка 6</li>
+		<li class="li2">Комірка 7</li>
+		<li class="li2">Комірка 8</li>
+		<li class="li2">Комірка 9</li>
+	</ul>
+	<button class="btn2">Test 2</button>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		$('.btn1').click(() => {
+			$("li").filter(".li1").css("background-color", "blue").text('modify');
+		});
+
+		$('.btn2').click(() => {
+			$(".li2").filter(":nth-child(3n)").css("background-color", "green").text('modify');
+		});
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>6 завдання</title>
+	<style>
+		* {
+			font-size: 20px;
+		}
+		.div1 {
+			position: relative;
+			background:#ECF9FF;
+			height: 100px;
+			width: 100px;
+		}
+	</style>
+</head>
+<body>
+	<button class="btn1">Start animation</button><br><br>
+	<div class="div1"></div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		$('.btn1').click(() => {
+			$('.div1').animate({
+				left: '650px',
+      	opacity: '0.5',
+      	height: '250px',
+      	width: '450px'
+			}, 500, 'linear', () => {
+				$('.div1').css('background-color', 'blue')
+			});
+		});
+	</script>
+</body>
+</html>

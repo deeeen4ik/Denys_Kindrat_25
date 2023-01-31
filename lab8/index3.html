@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>3 завдання</title>
+	<style>
+		* {
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<hr><br>
+	<h1 align="center">Атрибут .content()</h1>
+	<div class="div1"><em>Hello world</em></div><br>
+	<button class="button1">Test 1</button><br>
+
+	<br><br><hr><br>
+
+	<h1 align="center">Атрибут .next()</h1>
+	<p class="p1">Параграф 1</p>
+	<p>Параграф 2</p>
+	<button class="button2">Test 2</button>
+	
+	<br><br><hr><br>
+
+	<h1 align="center">Атрибут .prevUntil()</h1>
+	<p class="pEnd">Параграф 1</p>
+	<p>Параграф 2</p>
+	<p>Параграф 3</p>
+	<p class="pStart">Параграф 4</p>
+	<button class="button3">Test 3</button>
+
+	<br><br><hr><br>
+
+	<h1 align="center">Атрибут .eq()</h1>
+	<p class="p4">Перший параграф index(0)</p>
+	<p class="p4">Другий параграф index(1)</p>
+	<p class="p4">Третій параграф index(2)</p>
+	<p class="p4">Четвертий параграф index(3)</p>
+	<button class="button4">Test 4</button>
+
+	<br><br><hr><br>
+
+	<h1 align="center">Атрибут .not()</h1>
+	<h2 class="h2_1">Параграф 1</h2>
+	<h2>Параграф 2</h2>
+	<h2>Параграф 3</h2>
+	<h2>Параграф 4</h2>
+	<button class="button5">Test 5</button>
+
+	<br><br><hr>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		// .content()
+		$(".button1").click(function(){
+    	$(".div1").contents().filter("em").wrap("<b/>");
+  	});
+
+		// .next()
+		$('.button2').click(() => {
+			$('.p1').next().css('color', 'blue');
+		});
+
+		// .prevUntil()
+		$('.button3').click(() => {
+			$('.pStart').prevUntil('.pEnd').css('color', 'blue');
+		});
+
+		// .eq()
+		$('.button4').click(() => {
+			$(".p4").eq(1).css("background-color", "blue");
+		});
+
+		// .not()
+		$('.button5').click(() => {
+			$("h2:not(.h2_1)").css("background-color", "blue");
+		});
+	</script>
+</body>
+</html>
