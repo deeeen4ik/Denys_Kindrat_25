@@ -1,0 +1,69 @@
+body {
+	background-image: url(1.svg);
+	background-repeat:no-repeat; 
+	margin:10px;
+}
+
+
+.main-table {
+	width: 100%;
+	border: 3px solid black;
+	margin: auto;
+  border-spacing: 0px;
+  border-collapse: collapse;
+}
+
+.main-text-table {
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-size: 2rem;
+	padding: 15px;
+}
+
+.active {
+	background-color: black;
+	color: white;
+}
+
+.blured {
+	opacity: 50%;
+}
+
+p {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size: 1.2rem;
+	cursor: default;
+}
+
+a {
+	color: yellow;
+	text-decoration: none;
+}
+
+a:active, a:after, a:hover {
+ color: white;
+ text-decoration: none;
+}
+
+.email-a {
+	color: black;
+	text-decoration: none;
+}
+
+#img-Max, #img-Vitalii, #img-Vasya, #img-Vlad {
+	width: 250px;
+	margin-left: 50px;
+}
+
+#person1, #person2, #person3, #person4 {
+	padding: 15px;
+	border-top: 3px solid black;
+}
+
+#person1:hover, #person2:hover, #person3:hover, #person4:hover {
+	background-color: black;
+	color:  white;
+}
+
+#bio-Max,	#bio-Vitalii, #bio-Vasya, #bio-Vlad {
+	display: none;
+}
