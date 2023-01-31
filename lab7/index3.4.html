@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<p> Введіть в текстове поле слово 'correct'.</p>
+	<p> Введіть слово 'correct'.</p>
  
   <form action="javascript:alert('Успішно!');">
     <div>
@@ -24,7 +24,7 @@
 	<script>
 		$("form").submit(() => {
       if ($("input:first").val() == "correct") {
-        $("span").text("Перевіряєм...").show();
+        $("span").text("Перевірка").show();
         return true;
       }
       $("span").text("Неправильно!").show().fadeOut(1000);
