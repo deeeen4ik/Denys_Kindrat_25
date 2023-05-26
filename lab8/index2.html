@@ -25,65 +25,139 @@
 			border: 2px solid blueviolet;
 			background-color: lightblue;
 		}
+		.wrapper {
+      border: 2px solid red;
+      padding: 10px;
+    }
+	ul {
+      background-color: #f5f5f5;
+      padding: 10px;
+    }
+    li {
+      margin-bottom: 5px;
+    }
+	#box {
+      width: 200px;
+      height: 100px;
+      background-color: red;
+      border: 1px solid black;
+    }
 
 	</style>
 </head>
 <body>
 	<hr>
 
-	<h1 align="center">Атрибут .before()</h1>
-	<button class="btn1">Додавання тексту перед параграфами</button>
-	<p class="p1">Параграф 1</p>
-	<p class="p1">Параграф 2</p>
+	<h1 id="heading">Це заголовок</h1>
+  <p id="text">Це текст</p>
+
+  <button onclick="insertAfter()">Вставити новий елемент після параграфу</button>
+
+  <script>
+    function insertAfter() {
+      var newElement = document.createElement("p");
+      newElement.textContent = "Це новий елемент";
+
+      var referenceElement = document.getElementById("text");
+
+      referenceElement.insertAdjacentElement("afterend", newElement);
+    }
+  </script>
 
  	<br><hr><br>
 
-	<h1 align="center">Атрибут .remove()</h1>
-	<div class="div1">
-			<p class="p2">Параграф 1</p>
-			<p class="p2">Параграф 2</p>
-	</div><br>
-	<button class="btn2">Видаляє div</button>
+	 <div class="container">
+		<p>Це текст, який буде обгорнутий</p>
+	  </div>
+	
+	  <button onclick="wrapElement()">Обгорнути елемент</button>
+	
+	  <script>
+		function wrapElement() {
+		  
+		  var elementToWrap = document.querySelector(".container");
+
+		  var wrapperElement = document.createElement("div");
+		  wrapperElement.classList.add("wrapper");
+	
+		  elementToWrap.parentNode.insertBefore(wrapperElement, elementToWrap);
+		  wrapperElement.appendChild(elementToWrap);
+		}
+	  </script>
 
 	<br><br><hr><br>
 
-	<h1 align="center">Атрибут .height()</h1>
-	<div class="div2">
-	</div><br>
-	<button class="btn3">Показує висоту елемента div</button>
+	<ul id="tree">
+		<li>Node 1
+		  <ul>
+			<li>Child 1</li>
+			<li>Child 2</li>
+		  </ul>
+		</li>
+		<li>Node 2
+		  <ul>
+			<li>Child 3</li>
+			<li>Child 4</li>
+		  </ul>
+		</li>
+	  </ul>
+	
+	  <button onclick="detachTree()">Від'єднати дерево</button>
+	
+	  <script>
+		function detachTree() {
+		  var tree = document.getElementById("tree");
+		  tree.remove();
+		}
+	  </script>
 
-	<br><br><hr><br>
+	<br><br><hr>
+    <div id="box">Цей блок має ширину 200px.</div>
 
-	<h1 align="center">Атрибут .outerWidth()</h1>
-	<div class="div3">
-	</div><br>
-	<button class="btn4">Показує загальну ширину елемента div</button>
+  <button onclick="changeWidth()">Змінити ширину</button>
+
+  <script>
+    function changeWidth() {
+      var box = document.getElementById("box");
+      var currentWidth = box.offsetWidth;
+      var newWidth = currentWidth + 100;
+      box.style.width = newWidth + "px";
+      alert("Нова ширина блока: " + newWidth + "px");
+    }
+  </script>
 
 	<br><br><hr>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script>
-		// .before()
-		$(".btn1").click(() => {
-    	$(".p1").before("<p>Text!</p>");
-  	});
+	<div id="box">Цей блок має позицію relative.</div>
 
-		// .remove()
-		$(".btn2").click(() => {
-    	$(".div1").remove();
-  	});
+  <button onclick="getPosition()">Отримати позицію</button>
 
-		// .height()
-		$(".btn3").click(() => {
-    	alert("Висота елемента div: " + $(".div2").height());
-  	});
+  <script>
+    function getPosition() {
+      var box = document.getElementById("box");
+      var position = box.getBoundingClientRect();
+      var top = position.top;
+      var left = position.left;
+      alert("Позиція блока: Верхня: " + top + "px, Ліва: " + left + "px");
+    }
+  </script>
 
-		// .outerWidth()
-		$(".btn4").click(() => {
-    	alert("Загальна довжина елемента div: " + $(".div3").outerWidth());
-  	});
+    <br><br><hr>
 
+	<div id="box">
+		<p>Цей блок має висоту, яка включає в себе падінг і рамку.</p>
+	  </div>
+	
+	  <button onclick="getOuterHeight()">Отримати зовнішню висоту</button>
+	
+	  <script>
+		function getOuterHeight() {
+		  var box = document.getElementById("box");
+		  var outerHeight = box.offsetHeight;
+		  alert("Зовнішня висота блока: " + outerHeight + "px");
+		}
+	  </script>
 
-	</script>
+   
 </body>
 </html>
