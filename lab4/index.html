@@ -1,119 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Test</title>
-	<style>
-		.btnShow {
-			position: relative;
-			width: 500px; height: 75px;
-			left: 85vh; top: 45vh;
-			font-size: 2rem;
-			background-color: black;
-			color: white;
-		}
-		.btnFinish {
-			display: none;
-			position: relative;
-			width: 300px; height: 50px;
-			left: 85vh; top: 2vh;	
-			font-size: 2rem;
-			background-color: black;
-			color: white;
-		}
-		.btnShow:hover, .btnFinish:hover {
-			background-color: white;
-			color: black;
-			cursor: pointer;
-		}
-
-	</style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test</title>
+  <style>
+    .btnShow {
+      position: relative;
+      width: 500px;
+      height: 75px;
+      left: 85vh;
+      top: 45vh;
+      font-size: 2rem;
+      background-color: black;
+      color: white;
+    }
+    .btnFinish {
+      display: none;
+      position: relative;
+      width: 300px;
+      height: 50px;
+      left: 85vh;
+      top: 2vh;
+      font-size: 2rem;
+      background-color: black;
+      color: white;
+    }
+    .btnShow:hover,
+    .btnFinish:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+    .result-table {
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+    .result-table th,
+    .result-table td {
+      border: 1px solid black;
+      padding: 8px;
+    }
+  </style>
 </head>
 <body>
-	<form id="generalForm" style="display: none;">
-		<fieldset class="choice">
-			<h2>Ви донатите на ЗСУ?</h2>
-			<input type="radio" name="firstQuestion" value="True"> Так :) <br>
-			<br><input type="radio" name="firstQuestion" value="False"> Ні :(<br>
-		</fieldset>
+  <form id="generalForm" style="display: none;">
+    <fieldset class="choice">
+      <h2>Ви донатите на ЗСУ?</h2>
+      <input type="radio" name="firstQuestion" value="True"> Так :) <br>
+      <br><input type="radio" name="firstQuestion" value="False"> Ні :(<br>
+    </fieldset>
 
-        <fieldset class="choice">
-			<h2>Укажіть ваших улюблених виконавців(2 правильні відповіді)</h2>
-		  <input type="checkbox" name="secondQuestion" value="True"> Святослав Вакарчук <br>
-			<br><input type="checkbox" name="secondQuestion" value="False"> Інстасамка<br>
-            <br><input type="checkbox" name="secondQuestion" value="False"> Бузова <br>
-			<br><input type="checkbox" name="secondQuestion" value="True"> Олександр Пономарьов <br>
-		</fieldset>
+    <fieldset class="choice">
+      <h2>Укажіть ваших улюблених виконавців(2 правильні відповіді)</h2>
+      <input type="checkbox" name="secondQuestion" value="True"> Святослав Вакарчук <br>
+      <br><input type="checkbox" name="secondQuestion" value="False"> Інстасамка<br>
+      <br><input type="checkbox" name="secondQuestion" value="False"> Бузова <br>
+      <br><input type="checkbox" name="secondQuestion" value="True"> Олександр Пономарьов <br>
+    </fieldset>
 
-		<fieldset class="choice">
-			<h2>Українська мова друга по милозвучності в світі?</h2>
-			<input type="radio" name="thirdQuestion" value="True"> Так :) <br>
-			<br><input type="radio" name="thirdQuestion" value="False"> Ні :(<br>
-		</fieldset>
+    <fieldset class="choice">
+      <h2>Українська мова друга по милозвучності в світі?</h2>
+      <input type="radio" name="thirdQuestion" value="True"> Так :) <br>
+      <br><input type="radio" name="thirdQuestion" value="False"> Ні :(<br>
+    </fieldset>
 
-		<fieldset class="choice">
-			<h2>Укажіть ваш улюблений університет</h2>
-		  <input type="radio" name="fourthQuestion" value="False"> Національний університет "Львівська політехніка" <br>
-			<br><input type="radio" name="fourthQuestion" value="False"> Івано-Франківський національний технічний університет нафти і газу <br>
-			<br><input type="radio" name="fourthQuestion" value="True"> Прикарпатський національний університет <br>
-			<br><input type="radio" name="fourthQuestion" value="False"> Університет Короля<br>
-		</fieldset>
+    <fieldset class="choice">
+      <h2>Укажіть ваш улюблений університет</h2>
+      <input type="radio" name="fourthQuestion" value="False"> Національний університет "Львівська політехніка" <br>
+      <br><input type="radio" name="fourthQuestion" value="False"> Івано-Франківський національний технічний університет нафти і газу <br>
+      <br><input type="radio" name="fourthQuestion" value="True"> Прикарпатський національний університет <br>
+      <br><input type="radio" name="fourthQuestion" value="False"> Університет Короля<br>
+    </fieldset>
 
-		<fieldset class="info">
-			<h2>Вкажіть своє ім'я:</h2>
-			<input type="text" name="fiveQuestion" placeholder="Денис" ><br><br>	
-		</fieldset>
+    <fieldset class="info">
+      <h2>Вкажіть своє ім'я:</h2>
+      <input type="text" name="fiveQuestion" placeholder="Денис"><br><br>  
+    </fieldset>
 
-		<fieldset class="info">
-			<h2>Вкажіть свій номер телефону:</h2>
-			(+380) <input type="number" name="sixQuestion" placeholder="00-000-000"><br><br>
-		</fieldset>
-	</form>
-				<button id="end" class="btnFinish">Finish</button>
-        <button id="show" class="btnShow">Start</button>
-	
-				<script>
-					const btnShow = document.querySelector('#show');
-        	const btnFinish = document.querySelector('#end');
+    <fieldset class="info">
+      <h2>Вкажіть свій номер телефону:</h2>
+      (+380) <input type="number" name="sixQuestion" placeholder="00-000-000"><br><br>
+    </fieldset>
+  </form>
+  <button id="end" class="btnFinish">Finish</button>
+  <button id="show" class="btnShow">Start</button>
 
-					btnShow.addEventListener('click', () => {
-            document.querySelector('#generalForm').style.display = 'block';
-            document.querySelector('#show').style.display = 'none';
-						document.querySelector('#end').style.display = 'block'
-            btnResult.style.display = 'block';
-        });
+  <div id="resultContainer"></div>
 
-				function getSelected() {
-            return document.querySelectorAll('.choice input:checked');
-        }
+  <script>
+    const btnShow = document.querySelector('#show');
+    const btnFinish = document.querySelector('#end');
 
-				function getPrivateInfo() {
-            return document.querySelectorAll('.info input');
-        }
+    btnShow.addEventListener('click', () => {
+      document.querySelector('#generalForm').style.display = 'block';
+      document.querySelector('#show').style.display = 'none';
+      document.querySelector('#end').style.display = 'block';
+    });
 
-				function getValues(inputs) {
-            return Array.from(inputs, inp => inp.value);
-        }
+    function getSelected() {
+      return document.querySelectorAll('.choice input:checked');
+    }
 
-				function getResult(array){
-                    return (array.length-2 < array.filter(el => el === 'Ukr').length) ? 'Вітаю, ви пройшли тест' : `Ви пройшли тест на: ${array.filter(el => el === 'True').length*20}%`;
-        }
+    function getPrivateInfo() {
+      return document.querySelectorAll('.info input');
+    }
 
-				btnFinish.addEventListener('click', () => {
-            const selected = getValues(getSelected());
-            const [name, phone] = getValues(getPrivateInfo());
+    function getValues(inputs) {
+      return Array.from(inputs, inp => inp.value);
+    }
 
+    function getResult(array) {
+      return (array.length - 2 < array.filter(el => el === 'Ukr').length) ? 'Вітаю, ви пройшли тест' : `Ви пройшли тест на: ${array.filter(el => el === 'True').length * 20}%`;
+    }
 
-            document.querySelector('#generalForm').style.display = 'none';
-            btnFinish.style.display = 'none';
+    btnFinish.addEventListener('click', () => {
+      const selected = getValues(getSelected());
+      const [name, phone] = getValues(getPrivateInfo());
+      document.querySelector('#generalForm').style.display = 'none';
+      btnFinish.style.display = 'none';
 
-
-            const result = document.createElement('div');
-            result.innerHTML = `<h2>Результат</h2>Імя: ${name}<br>Телефон: ${phone}<br>${getResult(selected)}`;
-            document.body.prepend(result);
-        });
-				</script>
+      const resultContainer = document.querySelector('#resultContainer');
+      const resultTable = document.createElement('table');
+      resultTable.className = 'result-table';
+      resultTable.innerHTML = `
+        <tr>
+          <th>Питання</th>
+          <th>Відповідь</th>
+          <th>Бали</th>
+        </tr>
+        <tr>
+          <td>Ви донатите на ЗСУ?</td>
+          <td>${selected[0]}</td>
+          <td>${selected[0] === 'True' ? '20' : '0'}</td>
+        </tr>
+		<tr>
+          <td>Укажіть ваших улюблених виконавців(2 правильні відповіді)</td>
+          <td>${selected[1]}, ${selected[2]}</td>
+          <td>${selected[1] === 'True' ? '10' : '0'}, ${selected[2] === 'True' ? '10' : '0'}</td>
+        </tr>
+        <tr>
+          <td>Українська мова друга по милозвучності в світі?</td>
+          <td>${selected[3]}</td>
+          <td>${selected[3] === 'True' ? '20' : '0'}</td>
+        </tr>
+        <tr>
+          <td>Укажіть ваш улюблений університет</td>
+          <td>${selected[4]}</td>
+          <td>${selected[4] === 'True' ? '20' : '0'}</td>
+        </tr>
+      </table>
+      <p>Ім'я: ${name}</p>
+      <p>Телефон: ${phone}</p>
+      <p>${getResult(selected)}</p>
+      `;
+      resultContainer.appendChild(resultTable);
+    });
+  </script>
 </body>
 </html>
