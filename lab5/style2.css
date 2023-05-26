@@ -50,7 +50,6 @@ a:active, a:after, a:hover {
 }
 
 #img-Max, #img-Vitalii, #img-Vasya, #img-Vlad {
-	width: 250px;
 	margin-left: 50px;
 }
 
@@ -67,3 +66,10 @@ a:active, a:after, a:hover {
 #bio-Max,	#bio-Vitalii, #bio-Vasya, #bio-Vlad {
 	display: none;
 }
+.active img {
+	width: 350px;	
+	height: 350px;
+  }
+  .active p {
+	color: #ff0000;
+  }
