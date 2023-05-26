@@ -5,48 +5,160 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>5 завдання</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<style>
 		* {
 			font-size: 20px;
 		}
+		.highlight {
+      background-color: yellow;
+    }
 	</style>
 </head>
 <body>
-	<hr><br>
-	<h1 align="center">Атрибут .each()</h1>
-	<ul>
-		<li class="li1">Test 1</li>
-		<li class="li1">Test 2</li>
-		<li class="li1">Test 3</li>
-	</ul>
-	<button class="btn1">Test .each()</button>
+	<div class="container">
+		<h2>Container</h2>
+		<div class="target">
+		  <h3>Target Element</h3>
+		  <p>Це цільовий елемент</p>
+		</div>
+	  </div>
+	
+	  <button onclick="checkContains()">Перевірити, чи міститься елемент у контейнері</button>
+	
+	  <script>
+		function checkContains() {
+		  var container = $(".container");
+		  var targetElement = $(".target");
+	
+		  if ($.contains(container[0], targetElement[0])) {
+			targetElement.addClass("highlight");
+			alert("Елемент міститься у контейнері.");
+		  } else {
+			alert("Елемент не міститься у контейнері.");
+		  }
+		}
+	  </script>
 
-	<br><br><hr><br>
+	<br><br><hr>
+    <div id="myElement">Це елемент збережених даних.</div>
 
-	<h1 align="center">Атрибут .RemoveData()</h1>
-	<button class="btn2_1">Hello World!</button>
-	<button class="btn2_2">Test .RemoveData()</button>
+  <button onclick="setData()">Встановити дані</button>
+  <button onclick="getData()">Отримати дані</button>
+
+  <script>
+    function setData() {
+      var element = $("#myElement");
+      element.data("name", "Denys Kindrat");
+      element.data("age", 21);
+      element.addClass("highlight");
+      alert("Дані були встановлені.");
+    }
+
+    function getData() {
+      var element = $("#myElement");
+      var name = element.data("name");
+      var age = element.data("age");
+
+      alert("Ім'я: " + name + ", Вік: " + age);
+    }
+  </script>
 
 	<br><br><hr>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script>
-		// .each()
-		$('.btn1').click(() => {
-			$("li").each(function() {
-				alert($(this).text())
-			});
-		});
+	<body>
+		<input type="text" id="inputField">
+		<button onclick="checkNumeric()">Перевірити</button>
+	  
+		<script>
+		  function checkNumeric() {
+			var inputValue = $("#inputField").val();
+			if ($.isNumeric(inputValue)) {
+			  alert("Введене значення є числовим.");
+			} else {
+			  alert("Введене значення не є числовим.");
+			}
+		  }
+		</script>
 
-		// .removeData()
-		$(".btn2_1").click(() => {
-    	$("div").data("greeting", "Hello World!");
-      	alert("Greeting: " + $("div").data("greeting"));
-    });
-  	$(".btn2_2").click(() => {
-    	$("div").removeData("greeting");
-      	alert("Greeting: " + $("div").data("greeting"));
-		});
-	</script>
+<br><br><hr>
+
+<div>
+    <button id="checkButton">Перевірити об'єкти</button>
+  </div>
+  <div id="results">
+    <h3>Результати перевірки:</h3>
+    <ul id="resultList"></ul>
+  </div>
+
+  <script>
+    // Об'єкти для перевірки
+    var objects = [
+      { name: "John", age: 30 },
+      ["apple", "banana", "orange"],
+      "Hello, World!",
+      123,
+      null,
+      undefined,
+      function() {},
+      new Date()
+    ];
+
+    // Функція для перевірки об'єктів
+    function checkObjects() {
+      $("#resultList").empty();
+
+      objects.forEach(function(obj) {
+        var isPlainObject = $.isPlainObject(obj);
+        var listItem = $("<li>").text(JSON.stringify(obj) + ": " + (isPlainObject ? "True" : "False"));
+
+        $("#resultList").append(listItem);
+      });
+    }
+
+    // Обробник події для кнопки
+    $("#checkButton").click(checkObjects);
+  </script
+
+<br><br><hr>
+
+<div>
+    <button id="mergeButton">Злити масиви</button>
+  </div>
+  <div id="arrays">
+    <h3>Початкові масиви:</h3>
+    <ul id="arrayList">
+      <li>Масив 1: <span id="array1"></span></li>
+      <li>Масив 2: <span id="array2"></span></li>
+      <li>Масив 3: <span id="array3"></span></li>
+    </ul>
+  </div>
+  <div id="result1"></div>
+
+  <script>
+    // Початкові масиви
+    var array1 = [1, 2, 3];
+    var array2 = [4, 5, 6];
+    var array3 = [7, 8, 9];
+
+    // Функція для злиття масивів
+    function mergeArrays() {
+      var mergedArray = $.merge($.merge(array1, array2), array3);
+      $("#result1").text("Злиті масиви: " + mergedArray.join(", "));
+    }
+
+    // Функція для відображення початкових масивів
+    function displayArrays() {
+      $("#array1").text(array1.join(", "));
+      $("#array2").text(array2.join(", "));
+      $("#array3").text(array3.join(", "));
+    }
+
+    // Виклик функції для відображення початкових масивів
+    displayArrays();
+
+    // Обробник події для кнопки
+    $("#mergeButton").click(mergeArrays);
+  </script>
 </body>
 </html>
