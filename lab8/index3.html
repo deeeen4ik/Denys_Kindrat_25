@@ -9,76 +9,168 @@
 		* {
 			font-size: 20px;
 		}
+		.container {
+      border: 2px solid black;
+      padding: 10px;
+    }
+
+    .inner-container {
+      border: 2px solid red;
+      padding: 10px;
+    }
+
+    .target {
+      background-color: blue;
+    }
+	.highlight {
+      background-color: green;
+    }
 	</style>
 </head>
 <body>
-	<hr><br>
-	<h1 align="center">Атрибут .content()</h1>
-	<div class="div1"><em>Hello world</em></div><br>
-	<button class="button1">Test 1</button><br>
+	<div class="container">
+		<p>Батьківський контейнер</p>
+		<div class="inner-container">
+		  <p>Внутрішній контейнер</p>
+		  <button onclick="findClosest()">Знайти найближчий батьківський елемент з класом .container</button>
+		</div>
+	  </div>
+	
+	  <script>
+		function findClosest() {
+		  var innerContainer = document.querySelector(".inner-container");
+		  var closestContainer = innerContainer.closest(".container");
+		  
+		  closestContainer.classList.add("target");
+		  alert("Найближчий батьківський елемент з класом .container виділений синім кольором.");
+		}
+	  </script>
 
 	<br><br><hr><br>
 
-	<h1 align="center">Атрибут .next()</h1>
-	<p class="p1">Параграф 1</p>
-	<p>Параграф 2</p>
-	<button class="button2">Test 2</button>
+	<body>
+		<div class="container2">
+		  <p>Елемент 1</p>
+		  <p>Елемент 2</p>
+		  <p>Елемент 3</p>
+		  <button onclick="highlightContents()">Виділити вміст контейнера</button>
+		</div>
+	  
+		<script>
+		  function highlightContents() {
+			var container = document.querySelector(".container2");
+			var contents = container.childNodes;
+	  
+			contents.forEach(function(element) {
+			  if (element.nodeType === 3) {
+				// Текстовий вузол
+				var textNode = element;
+				var span = document.createElement("span");
+				span.textContent = textNode.textContent;
+				span.classList.add("highlight");
+				textNode.parentNode.replaceChild(span, textNode);
+			  } else {
+				// Елемент
+				element.classList.add("highlight");
+			  }
+			});
+	  
+			alert("Вміст контейнера виділиться зеленим кольором");
+		  }
+		</script>
 	
 	<br><br><hr><br>
 
-	<h1 align="center">Атрибут .prevUntil()</h1>
-	<p class="pEnd">Параграф 1</p>
-	<p>Параграф 2</p>
-	<p>Параграф 3</p>
-	<p class="pStart">Параграф 4</p>
-	<button class="button3">Test 3</button>
+	<div id="container">
+		<div>Елемент 1</div>
+		<div>Елемент 2</div>
+		<div>Елемент 3</div>
+		<div class="highlight">Елемент 4</div>
+		<div>Елемент 5</div>
+	  </div>
+	
+	  <button onclick="highlightSlice()">Виділити елементи</button>
+	
+	  <script>
+		function highlightSlice() {
+		  var elements = Array.from(document.querySelectorAll("#container div"));
+		  var startIndex = 2; // Індекс початкового елемента
+		  var endIndex = 4; // Індекс кінцевого елемента (включно)
+	
+		  var slicedElements = elements.slice(startIndex, endIndex + 1);
+	
+		  slicedElements.forEach(function(element) {
+			element.classList.add("highlight");
+		  });
+	
+		  alert("Виділені елементи виділяться зеленим кольором.");
+		}
+	  </script>
+
+	<br><br><hr><br>
+    <div id="container5">
+		<div>Елемент 1</div>
+		<div>Елемент 2</div>
+		<div>Елемент 3</div>
+		<div>Елемент 4</div>
+		<div>Елемент 5</div>
+	  </div>
+	
+	  <button onclick="highlightParent()">Виділити батьківські елементи</button>
+	
+	  <script>
+		function highlightParent() {
+		  var elements = document.querySelectorAll("#container5 div");
+	
+		  for (var i = 0; i < elements.length; i++) {
+			if (elements[i].closest("#container5")) {
+			  elements[i].classList.add("highlight");
+			}
+		  }
+	
+		  alert("Батьківські елементи виділяться зеленим кольором");
+		}
+	  </script
+	
 
 	<br><br><hr><br>
 
-	<h1 align="center">Атрибут .eq()</h1>
-	<p class="p4">Перший параграф index(0)</p>
-	<p class="p4">Другий параграф index(1)</p>
-	<p class="p4">Третій параграф index(2)</p>
-	<p class="p4">Четвертий параграф index(3)</p>
-	<button class="button4">Test 4</button>
+	<div class="highlight">
+		<h2>Заголовок</h2>
+		<p>Це параграф</p>
+		<ul>
+		  <li>Елемент 1</li>
+		  <li>Елемент 2</li>
+		  <li>Елемент 3</li>
+		</ul>
+	  </div>
+	
+	  <button onclick="highlightParents()">Виділити батьківські елементи </button>
+	
+	  <script>
+		function highlightParents() {
+		  var targetElement = document.querySelector(".highlight");
+	
+		  var parentsToHighlight = [];
+	
+		  var parentElement = targetElement.parentElement;
+		  while (parentElement) {
+			parentsToHighlight.push(parentElement);
+			parentElement = parentElement.parentElement;
+		  }
+	
+		  parentsToHighlight.forEach(function(element) {
+			element.classList.add("highlight");
+		  });
+	
+		  alert("Батьківські елементи до виділяються зеленим кольором");
+		}
+	  </script>
 
-	<br><br><hr><br>
-
-	<h1 align="center">Атрибут .not()</h1>
-	<h2 class="h2_1">Параграф 1</h2>
-	<h2>Параграф 2</h2>
-	<h2>Параграф 3</h2>
-	<h2>Параграф 4</h2>
-	<button class="button5">Test 5</button>
+	
 
 	<br><br><hr>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script>
-		// .content()
-		$(".button1").click(function(){
-    	$(".div1").contents().filter("em").wrap("<b/>");
-  	});
-
-		// .next()
-		$('.button2').click(() => {
-			$('.p1').next().css('color', 'blue');
-		});
-
-		// .prevUntil()
-		$('.button3').click(() => {
-			$('.pStart').prevUntil('.pEnd').css('color', 'blue');
-		});
-
-		// .eq()
-		$('.button4').click(() => {
-			$(".p4").eq(1).css("background-color", "blue");
-		});
-
-		// .not()
-		$('.button5').click(() => {
-			$("h2:not(.h2_1)").css("background-color", "blue");
-		});
-	</script>
+	
 </body>
 </html>
